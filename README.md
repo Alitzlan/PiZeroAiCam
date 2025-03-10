@@ -11,3 +11,8 @@ cd PiZeroAiCam
 bash install.sh
 ```
 Then reboot the device
+
+# Unofficial ST7789 Display Driver Perf Optimization
+The ST7789 library is using the [obsolete `xfer` method to write the display via SPI](https://github.com/pimoroni/st7789-python/blob/v1.0.1/st7789/__init__.py#L18)
+
+Double the framerate with the [more optimized `writedata2` method](https://pypi.org/project/spidev/) and remove the send by chunk logic
